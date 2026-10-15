@@ -1,4 +1,4 @@
-package com.tdcolvin.lmktester
+package com.tdcolvin.memoryhog
 
 import android.os.Debug
 import java.io.File

@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.tdcolvin.lmktester"
+    namespace = "com.tdcolvin.memoryhog"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.tdcolvin.lmktester"
+        applicationId = "com.tdcolvin.memoryhog"
         minSdk = 31
         targetSdk = 37
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.tdcolvin.lmktester.features.memorydiff
+package com.tdcolvin.memoryhog.features.memorydiff
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,9 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tdcolvin.lmktester.MemoryStats
-import com.tdcolvin.lmktester.getMemoryStats
-import com.tdcolvin.lmktester.ui.theme.LMKTesterTheme
+import com.tdcolvin.memoryhog.MemoryStats
+import com.tdcolvin.memoryhog.getMemoryStats
+import com.tdcolvin.memoryhog.ui.theme.MemoryHogTheme
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -215,7 +215,7 @@ fun MemoryDiff(afterKb: Long, beforeKb: Long?) {
 @Preview(showBackground = true)
 @Composable
 fun MemoryDiffScreenPreview() {
-    LMKTesterTheme {
+    MemoryHogTheme {
         MemoryDiffScreen(
             lastExitReason = "Killed by LMK",
             onAllocateNativeRam = { true },

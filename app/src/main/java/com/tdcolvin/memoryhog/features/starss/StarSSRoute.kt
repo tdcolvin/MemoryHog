@@ -1,7 +1,7 @@
-package com.tdcolvin.lmktester.features.jvmheap
+package com.tdcolvin.memoryhog.features.starss
 
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object JvmHeapRoute : NavKey
+data object StarSSRoute : NavKey

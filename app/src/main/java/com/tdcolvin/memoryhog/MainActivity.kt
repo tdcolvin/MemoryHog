@@ -1,4 +1,4 @@
-package com.tdcolvin.lmktester
+package com.tdcolvin.memoryhog
 
 import android.app.ActivityManager
 import android.app.ApplicationExitInfo
@@ -28,24 +28,24 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.tdcolvin.lmktester.features.jvmheap.JvmHeapRoute
-import com.tdcolvin.lmktester.features.jvmheap.JvmHeapScreen
-import com.tdcolvin.lmktester.features.memorydiff.MemoryDiffRoute
-import com.tdcolvin.lmktester.features.memorydiff.MemoryDiffScreen
-import com.tdcolvin.lmktester.features.starss.StarSSRoute
-import com.tdcolvin.lmktester.features.starss.StarSSScreen
-import com.tdcolvin.lmktester.features.starssdirty.StarSSDirtyRoute
-import com.tdcolvin.lmktester.features.starssdirty.StarSSDirtyScreen
-import com.tdcolvin.lmktester.ui.ALL_ROUTES
-import com.tdcolvin.lmktester.ui.RouteSelector
-import com.tdcolvin.lmktester.ui.getRouteIndexForKeyCode
-import com.tdcolvin.lmktester.ui.theme.LMKTesterTheme
+import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
+import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapScreen
+import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
+import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffScreen
+import com.tdcolvin.memoryhog.features.starss.StarSSRoute
+import com.tdcolvin.memoryhog.features.starss.StarSSScreen
+import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
+import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyScreen
+import com.tdcolvin.memoryhog.ui.ALL_ROUTES
+import com.tdcolvin.memoryhog.ui.RouteSelector
+import com.tdcolvin.memoryhog.ui.getRouteIndexForKeyCode
+import com.tdcolvin.memoryhog.ui.theme.MemoryHogTheme
 
 class MainActivity : ComponentActivity() {
 
     companion object {
         init {
-            System.loadLibrary("lmktester")
+            System.loadLibrary("memoryhog")
         }
     }
 
@@ -79,7 +79,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            LMKTesterTheme {
+            MemoryHogTheme {
                 val backStack = rememberNavBackStack(JvmHeapRoute)
                 val currentRoute = backStack.lastOrNull() ?: JvmHeapRoute
                 val routes = remember { ALL_ROUTES }

@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LMK Tester"
+rootProject.name = "Memory Hog"
 include(":app")
  

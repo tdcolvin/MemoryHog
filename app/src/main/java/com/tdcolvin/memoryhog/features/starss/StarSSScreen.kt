@@ -1,4 +1,4 @@
-package com.tdcolvin.lmktester.features.starss
+package com.tdcolvin.memoryhog.features.starss
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,11 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tdcolvin.lmktester.MemoryStats
-import com.tdcolvin.lmktester.features.memorydiff.ALLOCATE_AMOUNT
-import com.tdcolvin.lmktester.features.memorydiff.MemoryDiff
-import com.tdcolvin.lmktester.getMemoryStats
-import com.tdcolvin.lmktester.ui.theme.LMKTesterTheme
+import com.tdcolvin.memoryhog.MemoryStats
+import com.tdcolvin.memoryhog.features.memorydiff.ALLOCATE_AMOUNT
+import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiff
+import com.tdcolvin.memoryhog.getMemoryStats
+import com.tdcolvin.memoryhog.ui.theme.MemoryHogTheme
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -171,7 +171,7 @@ fun StarSSMemoryStats(before: MemoryStats?, after: MemoryStats, modifier: Modifi
 @Preview(showBackground = true)
 @Composable
 fun StarSSScreenPreview() {
-    LMKTesterTheme {
+    MemoryHogTheme {
         StarSSScreen(
             onAllocateNativeRam = { true },
         )

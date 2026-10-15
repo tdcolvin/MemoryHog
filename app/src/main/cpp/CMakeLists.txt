@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project("lmktester")
+project("memoryhog")
 
 add_library(
-    lmktester
+    memoryhog
     SHARED
-    lmktester.cpp
+        memoryhog.cpp
 )
 
 find_library(
@@ -14,6 +14,6 @@ find_library(
 )
 
 target_link_libraries(
-    lmktester
+    memoryhog
     ${log-lib}
 )

@@ -1,4 +1,4 @@
-package com.tdcolvin.lmktester.ui
+package com.tdcolvin.memoryhog.ui
 
 import android.view.KeyEvent
 import androidx.compose.foundation.layout.Arrangement
@@ -9,10 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
-import com.tdcolvin.lmktester.features.jvmheap.JvmHeapRoute
-import com.tdcolvin.lmktester.features.memorydiff.MemoryDiffRoute
-import com.tdcolvin.lmktester.features.starss.StarSSRoute
-import com.tdcolvin.lmktester.features.starssdirty.StarSSDirtyRoute
+import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
+import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
+import com.tdcolvin.memoryhog.features.starss.StarSSRoute
+import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
 
 val ALL_ROUTES: List<NavKey> = listOf(
     JvmHeapRoute,
