@@ -13,12 +13,14 @@ import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
 import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
 import com.tdcolvin.memoryhog.features.starss.StarSSRoute
 import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
+import com.tdcolvin.memoryhog.features.text.TextRoute
 
 val ALL_ROUTES: List<NavKey> = listOf(
     JvmHeapRoute,
     MemoryDiffRoute,
     StarSSRoute,
     StarSSDirtyRoute,
+    TextRoute,
 )
 
 fun NavKey.getRouteTitle(): String = when (this) {
@@ -26,6 +28,7 @@ fun NavKey.getRouteTitle(): String = when (this) {
     MemoryDiffRoute -> "Memory Diff"
     StarSSRoute -> "*SS"
     StarSSDirtyRoute -> "*SS + Dirty"
+    TextRoute -> "Mapped Text"
     else -> this::class.simpleName ?: "Unknown"
 }
 

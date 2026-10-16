@@ -36,6 +36,8 @@ import com.tdcolvin.memoryhog.features.starss.StarSSRoute
 import com.tdcolvin.memoryhog.features.starss.StarSSScreen
 import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
 import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyScreen
+import com.tdcolvin.memoryhog.features.text.TextRoute
+import com.tdcolvin.memoryhog.features.text.TextScreen
 import com.tdcolvin.memoryhog.ui.ALL_ROUTES
 import com.tdcolvin.memoryhog.ui.RouteSelector
 import com.tdcolvin.memoryhog.ui.getRouteIndexForKeyCode
@@ -166,6 +168,11 @@ class MainActivity : ComponentActivity() {
                                 entry<StarSSDirtyRoute> {
                                     StarSSDirtyScreen(
                                         onAllocateNativeRam = { allocateNativeRam(it, consume = true) },
+                                    )
+                                }
+                                entry<TextRoute> {
+                                    TextScreen(
+                                        onAllocateNativeRam = { allocateNativeRam(it, consume = true) }
                                     )
                                 }
                             },
