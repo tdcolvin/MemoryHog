@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -85,15 +84,6 @@ class MappedTextFile(file: File) {
         return String(bytes, StandardCharsets.UTF_8)
     }
 
-    fun close() {
-        try {
-            channel.close()
-        } catch (_: Exception) {}
-        try {
-            raf.close()
-        } catch (_: Exception) {}
-    }
-
     private fun buildLineOffsets(buffer: MappedByteBuffer): IntArray {
         val capacity = buffer.capacity()
         var lineCount = 1
@@ -143,7 +133,6 @@ fun TextScreen(
 
     var isInitialLoading by remember { mutableStateOf(true) }
     var mappedFiles by remember { mutableStateOf<List<MappedTextFile>>(emptyList()) }
-    val dirtyAllocations = remember { mutableStateListOf<ByteArray>() }
     var nativeDirtyCount by remember { mutableIntStateOf(0) }
 
     fun recordNewMemoryStats() {
@@ -194,16 +183,6 @@ fun TextScreen(
                 Text("Load More Shakespeare (+5.6 MB Clean)")
             }
 
-            Button(
-                enabled = !isInitialLoading,
-                onClick = {
-                    dirtyAllocations.add(ByteArray(50 * 1024 * 1024).apply { fill(1) })
-                    recordNewMemoryStats()
-                },
-            ) {
-                Text("Allocate 50MB Dirty RAM")
-            }
-
             if (onAllocateNativeRam != null) {
                 Button(
                     enabled = !isInitialLoading,
@@ -220,44 +199,17 @@ fun TextScreen(
 
             Button(
                 onClick = {
-                    System.gc()
-                    recordNewMemoryStats()
-                },
-            ) {
-                Text("Garbage collect")
-            }
-
-            Button(
-                onClick = {
                     recordNewMemoryStats()
                 },
             ) {
                 Text("Refresh")
-            }
-
-            Button(
-                enabled = mappedFiles.size > 1 || dirtyAllocations.isNotEmpty() || nativeDirtyCount > 0,
-                onClick = {
-                    scope.launch {
-                        withContext(Dispatchers.IO) {
-                            mappedFiles.drop(1).forEach { it.close() }
-                        }
-                        mappedFiles = mappedFiles.take(1)
-                        dirtyAllocations.clear()
-                        nativeDirtyCount = 0
-                        System.gc()
-                        recordNewMemoryStats()
-                    }
-                },
-            ) {
-                Text("Reset Allocations")
             }
         }
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Mapped Copies: ${mappedFiles.size} (~${(mappedFiles.size * 5.6).toInt()} MB Clean) | Dirty RAM: ${(dirtyAllocations.size + nativeDirtyCount) * 50} MB",
+            text = "Mapped Copies: ${mappedFiles.size} (~${(mappedFiles.size * 5.6).toInt()} MB Clean) | Dirty RAM: ${(nativeDirtyCount) * 50} MB",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
