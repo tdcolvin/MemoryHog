@@ -28,8 +28,6 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.tdcolvin.memoryhog.features.bitmap.BitmapRoute
-import com.tdcolvin.memoryhog.features.bitmap.BitmapScreen
 import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
 import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapScreen
 import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
