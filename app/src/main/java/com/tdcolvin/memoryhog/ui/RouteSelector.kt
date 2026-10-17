@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
 import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
+import com.tdcolvin.memoryhog.features.nativeleak.NativeLeakRoute
 import com.tdcolvin.memoryhog.features.starss.StarSSRoute
 import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
 import com.tdcolvin.memoryhog.features.text.TextRoute
@@ -21,6 +22,7 @@ val ALL_ROUTES: List<NavKey> = listOf(
     StarSSRoute,
     StarSSDirtyRoute,
     TextRoute,
+    NativeLeakRoute,
 )
 
 fun NavKey.getRouteTitle(): String = when (this) {
@@ -29,6 +31,7 @@ fun NavKey.getRouteTitle(): String = when (this) {
     StarSSRoute -> "*SS"
     StarSSDirtyRoute -> "*SS + Dirty"
     TextRoute -> "Mapped Text"
+    NativeLeakRoute -> "Native Leak"
     else -> this::class.simpleName ?: "Unknown"
 }
 

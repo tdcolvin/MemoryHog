@@ -28,10 +28,14 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.tdcolvin.memoryhog.features.bitmap.BitmapRoute
+import com.tdcolvin.memoryhog.features.bitmap.BitmapScreen
 import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapRoute
 import com.tdcolvin.memoryhog.features.jvmheap.JvmHeapScreen
 import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffRoute
 import com.tdcolvin.memoryhog.features.memorydiff.MemoryDiffScreen
+import com.tdcolvin.memoryhog.features.nativeleak.NativeLeakRoute
+import com.tdcolvin.memoryhog.features.nativeleak.NativeLeakScreen
 import com.tdcolvin.memoryhog.features.starss.StarSSRoute
 import com.tdcolvin.memoryhog.features.starss.StarSSScreen
 import com.tdcolvin.memoryhog.features.starssdirty.StarSSDirtyRoute
@@ -172,6 +176,11 @@ class MainActivity : ComponentActivity() {
                                 }
                                 entry<TextRoute> {
                                     TextScreen(
+                                        onAllocateNativeRam = { allocateNativeRam(it, consume = true) }
+                                    )
+                                }
+                                entry<NativeLeakRoute> {
+                                    NativeLeakScreen(
                                         onAllocateNativeRam = { allocateNativeRam(it, consume = true) }
                                     )
                                 }
